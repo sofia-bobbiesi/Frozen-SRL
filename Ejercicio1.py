@@ -6,4 +6,11 @@ class GeoAPI:
 
     @classmethod
     def is_hot_in_pehuajo(cls):
-        pass
+        try:
+            response = requests.get(f"http://api.openweathermap.org/data/2.5/weather?lat={cls.LAT}&lon={cls.LON}&appid={cls.API_KEY}")
+            data = response.json()
+            temp = data["main"]["temp"]
+            return temp > 300
+        except Exception as e:
+            print(e)
+            return False
