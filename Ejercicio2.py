@@ -11,8 +11,7 @@ def is_product_available(product_name, quantity):
     try:
         product = _PRODUCT_DF[_PRODUCT_DF["product_name"] == product_name]
         return product["quantity"].values[0] >= quantity
-    except Exception as e:
-        print(e)
+    except KeyError:
         return False
 
 #  Ejercicio 2.2:
