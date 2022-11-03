@@ -10,9 +10,9 @@ class GeoAPI:
             response = requests.get(
                 f"http://api.openweathermap.org/data/2.5/weather?lat={cls.LAT}&lon={cls.LON}&appid={cls.API_KEY}&units=metric"
             )
+            response.raise_for_status()
             data = response.json()
             temp = data["main"]["temp"]
             return temp > 28
-        except Exception as e:
-            print(e)
+        except requests.exceptions.HTTPError:
             return False
