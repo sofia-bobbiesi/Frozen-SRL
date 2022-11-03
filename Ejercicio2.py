@@ -3,9 +3,10 @@ from datetime import datetime, timedelta
 from time import sleep
 
 # Ejercicio 2.1
-_PRODUCT_DF = pd.DataFrame(
-    {"product_name": ["Chocolate", "Granizado", "Limon", "Dulce de Leche"],
- "quantity": [3,10,0,5]})
+_PRODUCT_DF = pd.DataFrame({
+    "product_name": ["Chocolate", "Granizado", "Limon", "Dulce de Leche"],
+    "quantity": [3,10,0,5]
+    })
 
 def is_product_available(product_name, quantity):
     try:
