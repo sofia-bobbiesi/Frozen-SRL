@@ -22,8 +22,8 @@ def is_product_available_2(product_name, quantity):
     if product_name + "_" + str(quantity) in _RETRIES_:
         product_time = _RETRIES_[product_name + "_" + str(quantity)]
         if product_time + timedelta(minutes=5) > datetime.now():
-            print("No se puede realizar la operación, intente más tarde")
-            sleep(300)
+            print("No se puede realizar la consulta, intente más tarde")
+            return
 
     try:
         product = _PRODUCT_DF[_PRODUCT_DF["product_name"] == product_name]
