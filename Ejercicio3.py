@@ -1,14 +1,15 @@
-_AVAILABLE_DISCOUNT_CODES = ["Primavera2021", "Verano2021", "Navidad2x1",
-"heladoFrozen"]
+# Ejercicio 3:
+_AVAILABLE_DISCOUNT_CODES = ["Primavera2021", "Verano2021", "Navidad2x1", "heladoFrozen"]
+
 def validate_discount_code(discount_code):
-    """
-    Ejemplo:
-    "primavera2021" deberia devolver True, ya que al compararlo:
-    vs "Primavera2021" = 2 caracteres de diferencia ("p" y "P")
-    vs "Verano2021" = 7 caracteres de diferencia ('i', 'n', 'o', 'm', 'V',
-    'p', 'v')
-    vs "Navidad2x1" = 8 caracteres de diferencia ('N', 'm', '0', 'x', 'e',
-    'd', 'p', 'r')
-    vs "heladoFrozen" = 14 caracteres de diferencia ('z', 'i', 'v', 'n',
-    'o', 'm', '2', '0', 'd', 'p', '1', 'F', 'h', 'l')
-    """
+    for code in _AVAILABLE_DISCOUNT_CODES:
+        diff = set()
+        for i in range(len(discount_code)):
+            if discount_code[i] not in code:
+                diff.add(discount_code[i])
+        for j in range(len(code)):
+            if code[j] not in discount_code:
+                diff.add(code[j])
+        if len(diff) < 3:
+            return True
+    return False
