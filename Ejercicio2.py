@@ -12,7 +12,7 @@ def is_product_available(product_name, quantity):
     try:
         product = _PRODUCT_DF[_PRODUCT_DF["product_name"] == product_name]
         return product["quantity"].values[0] >= quantity
-    except KeyError:
+    except IndexError:
         return False
 
 #  Ejercicio 2.2:
@@ -25,14 +25,13 @@ def is_product_available_2(product_name, quantity):
         if product_time + timedelta(minutes=5) > datetime.now():
             print("No se puede realizar la consulta, intente más tarde")
             return
-
     try:
         product = _PRODUCT_DF[_PRODUCT_DF["product_name"] == product_name]
         stock = product["quantity"].values[0] >= quantity
         return stock
-    except:
+    except IndexError:
         stock = False
-        return False
+        return stock
     finally:
         if not stock:
             _RETRIES_[product_name + "_" + str(quantity)] = datetime.now()
